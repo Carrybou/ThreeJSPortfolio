@@ -1,28 +1,32 @@
 import { initCamera } from './components/Camera';
-import { initLights } from './components/Lights';
-import { initControls } from './components/Controls';
-import { initObjects } from './components/Objects/Cube';
-import { initFloor } from './components/Objects/Floor'; // Import the floor initialization
-import { loadMuseumScene } from './components/import/importer.js';
-import { MainScene } from './scene';
+    import { initLights } from './components/Lights';
+    import { initControls } from './components/Controls';
+    import { loadMuseumScene } from './components/import/importer.js';
+    import { MainScene } from './scene';
 
-const scene = new MainScene();
-const camera = initCamera();
-initLights(scene);
-const { updateMovement, cameraParent } = initControls(camera);
+    const scene = new MainScene();
+    const camera = initCamera();
+    initLights(scene);
+    const { updateMovement, cameraParent } = initControls(camera);
 
-// Add the cameraParent to the scene
-// Charge la scène principale (Museum.gltf)
-loadMuseumScene((museumScene) => {
-    scene.add(museumScene); // Ajoute la scène du musée
-    scene.add(cameraParent); // Ajoute la caméra
-    animate(); // Démarre l'animation après le chargement
-});
+    // Declare museumScene in the outer scope
+    let museumScene;
 
-function animate() {
-    requestAnimationFrame(animate);
-    updateMovement(); // Handle movement
-    scene.render(camera);
-}
+    // Add the cameraParent to the scene
+    // Load the main scene (Museum.gltf)
+    loadMuseumScene((loadedMuseumScene) => {
+        museumScene = loadedMuseumScene; // Assign the loaded scene to the outer variable
+        scene.add(museumScene); // Add the museum scene
+        scene.add(cameraParent); // Add the camera
+        animate(); // Start the animation after loading
+    });
 
-animate();
+    function animate() {
+        requestAnimationFrame(animate);
+        if (museumScene) {
+            updateMovement(museumScene); // Pass the museumScene here
+        }
+        scene.render(camera);
+    }
+
+    animate();

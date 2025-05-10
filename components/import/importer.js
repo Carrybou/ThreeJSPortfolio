@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         loader.load(
             'components/import/Museum.gltf',
             (gltf) => {
+                console.log(gltf.scene);
                 callback(gltf.scene); // Retourne la scène chargée
             },
             (progress) => {
