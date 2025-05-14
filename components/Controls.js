@@ -2,7 +2,7 @@ import { Vector3, Object3D, Raycaster } from 'three';
 
     export function initControls(camera) {
         const movement = { forward: false, backward: false, left: false, right: false };
-        const speed = 0.1;
+        const speed = 0.05;
         const mouseSensitivity = 0.002;
 
         // Create a parent object for the camera

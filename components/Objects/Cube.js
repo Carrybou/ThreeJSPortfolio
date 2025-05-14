@@ -1,3 +1,4 @@
+/*
 import { BoxGeometry, Mesh, MeshStandardMaterial, Quaternion, Vector3 } from 'three';
 
 export function initObjects(scene) {
@@ -22,5 +23,4 @@ export function initObjects(scene) {
     // stockage de donnée dans l'objet
     cube.userData.nomDuCube = "toto";
 
-    scene.add(cube);
-}
+}*/
