@@ -66,7 +66,6 @@ import { Vector3, Object3D, Raycaster } from 'three';
             const cameraWorldPosition = new Vector3();
             camera.getWorldPosition(cameraWorldPosition); // Get the camera's world position
             raycaster.set(cameraWorldPosition, direction);
-            console.log('Camera world position:', cameraWorldPosition, 'Direction:', direction);
             const intersects = raycaster.intersectObjects(museumScene.children, true);
             if (intersects.length > 0 && intersects[0].distance < collisionDistance) {
                 console.log('Collision detected in direction:', direction);

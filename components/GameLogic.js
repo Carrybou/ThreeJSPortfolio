@@ -48,8 +48,13 @@ import { Raycaster, Vector2 } from 'three';
                     console.log('Expected Project Title:', portfolio[currentIndex]?.title);
                     console.log('Current Index:', currentIndex);
 
+                   // Load audio files
+                    const correctSound = new Audio('components/import/sounds/correct.mp3');
+                    const incorrectSound = new Audio('components/import/sounds/incorrect.mp3');
+
                     if (projectTitle === portfolio[currentIndex]?.title) {
                         console.log('Correct project clicked!');
+                        correctSound.play(); // Play correct sound
                         completedProjects.push(projectTitle);
                         currentIndex++;
                         updateProjectDisplay();
@@ -60,6 +65,7 @@ import { Raycaster, Vector2 } from 'three';
                     } else {
                         lives--;
                         console.log('Incorrect project clicked! Lives left:', lives);
+                        incorrectSound.play(); // Play incorrect sound
                         if (lives === 0) {
                             endGame('Game over!');
                         }

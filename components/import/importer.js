@@ -65,6 +65,7 @@ export function addPortfolioImages(scene, camera) {
             console.error('Camera is not defined or not a PerspectiveCamera');
             return;
         }
+
         // Convert mouse position to normalized device coordinates
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -72,6 +73,9 @@ export function addPortfolioImages(scene, camera) {
         // Perform raycasting
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(scene.children);
+
+        console.log('Mouse coordinates:', mouse);
+        console.log('Intersected objects:', intersects);
 
         const panel = document.getElementById('description-panel');
         if (intersects.length > 0) {
@@ -81,8 +85,8 @@ export function addPortfolioImages(scene, camera) {
                 const title = document.getElementById('project-title');
                 const description = document.getElementById('project-description');
 
-                title.textContent = hoveredObject.userData.title;
-                description.textContent = hoveredObject.userData.description;
+                title.textContent = hoveredObject.userData.title || 'No Title';
+                description.textContent = hoveredObject.userData.description || 'No Description';
 
                 panel.style.display = 'block';
                 panel.style.left = `${event.clientX + 10}px`; // Position near the mouse
