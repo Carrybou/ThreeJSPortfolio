@@ -4,16 +4,73 @@
     <meta charset="utf-8">
     <title>Mon application interactive en Three.js</title>
     <style>
-        body { margin: 0; padding: 0; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+            color: white;
+        }
+
+        #game-ui {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        #game-ui p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        #game-ui #current-project {
+            font-weight: bold;
+            font-size: 18px;
+            color: #ffcc00;
+        }
+
+        #game-ui ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        #game-ui ul li {
+            font-size: 14px;
+            color: #aaffaa;
+        }
+
         #description-panel {
             position: absolute;
             display: none;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Arial', sans-serif;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 300px;
+        }
+
+        #description-panel h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #ffcc00;
+        }
+
+        #description-panel p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
         }
     </style>
 </head>
